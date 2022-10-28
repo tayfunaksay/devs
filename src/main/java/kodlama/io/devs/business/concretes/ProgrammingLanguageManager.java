@@ -1,11 +1,14 @@
 package kodlama.io.devs.business.concretes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlama.io.devs.business.abstracts.ProgrammingLanguageService;
+import kodlama.io.devs.core.results.Result;
+import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
 
@@ -21,12 +24,23 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	}
 
 	@Override
-	public void add(ProgrammingLanguage programmingLanguage) throws Exception {
-		if (isNameExist(programmingLanguage)) {
+	public void add(ProgrammingLanguage programmingLanguage) {
 
-			throw new Exception("Aynı isimde yeni bir programlama dili kaydedilemez. İşlem başarısız.");
+		List<Result> rules = new ArrayList<Result>();
+
+		rules.add(isNameExist(programmingLanguage));
+		rules.add(isNameBlank(programmingLanguage));
+
+		Result checkRulesResult = RulesManager.checkRules(rules);
+
+		if (!checkRulesResult.isSuccess()) {
+
+			System.out.println(checkRulesResult.getMessage());
+		} else {
+
+			this.programmingLanguageRepository.add(programmingLanguage);
+
 		}
-		this.programmingLanguageRepository.add(programmingLanguage);
 
 	}
 
@@ -38,13 +52,23 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	}
 
 	@Override
-	public void update(ProgrammingLanguage programmingLanguage) throws Exception {
-		if (isNameExist(programmingLanguage)) {
+	public void update(ProgrammingLanguage programmingLanguage) {
+		
+		List<Result> rules = new ArrayList<Result>();
 
-			throw new Exception("Aynı isimde bir programlama dili zaten var. İşlem başarısız.");
+		rules.add(isNameExist(programmingLanguage));
+		rules.add(isNameBlank(programmingLanguage));
+
+		Result checkRulesResult = RulesManager.checkRules(rules);
+
+		if (!checkRulesResult.isSuccess()) {
+
+			System.out.println(checkRulesResult.getMessage());
+		} else {
+
+			this.programmingLanguageRepository.update(programmingLanguage);
+
 		}
-
-		this.programmingLanguageRepository.update(programmingLanguage);
 
 	}
 
@@ -59,17 +83,38 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 		return this.programmingLanguageRepository.getById(id);
 	}
+	
+	
+	
+	
 
-	public boolean isNameExist(ProgrammingLanguage programmingLanguage) throws Exception {
+	public Result isNameExist(ProgrammingLanguage programmingLanguage) {
 
-		boolean result = false;
+		Result result = new Result(true, "");
 
 		for (ProgrammingLanguage language : this.programmingLanguageRepository.getAll()) {
 			if (language.getName().equals(programmingLanguage.getName())) {
 
-				result = true;
+				result.setSuccess(false);
+				result.setMessage(
+						"Aynı isimde zaten bir programlama dili var. Lütfen farklı bir isim veriniz. İşlem Başarısız.");
 
 			}
+		}
+
+		return result;
+
+	}
+
+	public Result isNameBlank(ProgrammingLanguage programmingLanguage) {
+
+		Result result = new Result(true, "");
+
+		if (programmingLanguage.getName().isBlank()) {
+
+			result.setSuccess(false);
+			result.setMessage("Girilen isim değeri boş olamaz ve sadece boşluklardan oluşamaz. İşlem Başarısız.");
+
 		}
 
 		return result;
