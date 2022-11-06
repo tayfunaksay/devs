@@ -1,6 +1,7 @@
 package kodlama.io.devs.business.abstracts;
 
 import java.util.List;
+import java.util.Optional;
 
 import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
 
@@ -14,7 +15,7 @@ public interface ProgrammingLanguageService {
 	
 	List<ProgrammingLanguage> getAll();
 	
-	ProgrammingLanguage getById(int id);
+	Optional<ProgrammingLanguage> getById(int id);
 	
 
 

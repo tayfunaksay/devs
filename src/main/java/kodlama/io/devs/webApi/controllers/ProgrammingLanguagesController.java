@@ -1,6 +1,7 @@
 package kodlama.io.devs.webApi.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,9 +52,9 @@ public class ProgrammingLanguagesController {
 
 		
 	}
-
+	
 	@GetMapping("/getbyid")
-	public ProgrammingLanguage getById(int id) {
+	public Optional<ProgrammingLanguage> getById(int id) {
 		return this.programmingLanguageService.getById(id);
 
 		

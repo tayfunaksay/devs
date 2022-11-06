@@ -2,8 +2,6 @@ package kodlama.io.devs.core.results;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-
 
 public class RulesManager {
 	

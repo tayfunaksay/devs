@@ -2,6 +2,7 @@ package kodlama.io.devs.business.concretes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 			System.out.println(checkRulesResult.getMessage());
 		} else {
 
-			this.programmingLanguageRepository.add(programmingLanguage);
+			this.programmingLanguageRepository.save(programmingLanguage);
 
 		}
 
@@ -59,14 +60,14 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		rules.add(isNameExist(programmingLanguage));
 		rules.add(isNameBlank(programmingLanguage));
 
-		Result checkRulesResult = RulesManager.checkRules(rules);
+		Result checkedRulesResult = RulesManager.checkRules(rules);
 
-		if (!checkRulesResult.isSuccess()) {
+		if (!checkedRulesResult.isSuccess()) {
 
-			System.out.println(checkRulesResult.getMessage());
+			System.out.println(checkedRulesResult.getMessage());
 		} else {
 
-			this.programmingLanguageRepository.update(programmingLanguage);
+			this.programmingLanguageRepository.save(programmingLanguage);
 
 		}
 
@@ -75,13 +76,13 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	@Override
 	public List<ProgrammingLanguage> getAll() {
 
-		return this.programmingLanguageRepository.getAll();
+		return this.programmingLanguageRepository.findAll();
 	}
 
 	@Override
-	public ProgrammingLanguage getById(int id) {
+	public Optional<ProgrammingLanguage> getById(int id) {
 
-		return this.programmingLanguageRepository.getById(id);
+		return this.programmingLanguageRepository.findById(id);
 	}
 	
 	
@@ -92,7 +93,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 		Result result = new Result(true, "");
 
-		for (ProgrammingLanguage language : this.programmingLanguageRepository.getAll()) {
+		for (ProgrammingLanguage language : this.programmingLanguageRepository.findAll()) {
 			if (language.getName().equals(programmingLanguage.getName())) {
 
 				result.setSuccess(false);
@@ -120,5 +121,6 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		return result;
 
 	}
+	
 
 }
