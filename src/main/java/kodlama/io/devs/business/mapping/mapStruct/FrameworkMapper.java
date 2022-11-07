@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Repository;
 
 import kodlama.io.devs.business.requests.framework.CreateFrameworkRequest;
 import kodlama.io.devs.business.requests.framework.DeleteFrameworkRequest;
