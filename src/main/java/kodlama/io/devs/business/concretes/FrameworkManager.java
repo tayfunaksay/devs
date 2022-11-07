@@ -99,8 +99,7 @@ public class FrameworkManager implements FrameworkService {
 			if (existFramework.getName().equals(framework.getName())) {
 
 				result.setSuccess(false);
-				result.setMessage(
-						"Aynı isimde zaten bir Framework var. Lütfen farklı bir isim veriniz. İşlem Başarısız.");
+				result.setMessage("Aynı isimde zaten bir Framework var. Lütfen farklı bir isim veriniz. İşlem Başarısız.");
 			}
 		}
 		return result;
