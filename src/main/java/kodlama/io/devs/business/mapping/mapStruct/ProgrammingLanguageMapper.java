@@ -8,10 +8,11 @@ import kodlama.io.devs.business.responses.programmingLanguage.GetProgrammingLang
 import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 @Mapper(componentModel = "spring")
 public interface ProgrammingLanguageMapper {
 

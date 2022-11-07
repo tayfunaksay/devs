@@ -17,9 +17,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class FrameworkManager implements FrameworkService {
+
 	private final FrameworkRepository frameworkRepository;
+
 	private final  FrameworkMapper frameworkMapper;
 	
 	@Autowired
@@ -70,7 +73,7 @@ public class FrameworkManager implements FrameworkService {
 	@Override
 	public GetFrameworkByIdResponse getById(int id) {
 		
-			return frameworkMapper.toFrameworkByIdResponce(this.frameworkRepository.getFrameworkById(id)) ;
+			return frameworkMapper.toFrameworkByIdResponse(this.frameworkRepository.getFrameworkById(id)) ;
 		}
 	
 	
