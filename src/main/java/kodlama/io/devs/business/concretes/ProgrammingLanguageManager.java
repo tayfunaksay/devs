@@ -1,35 +1,41 @@
 package kodlama.io.devs.business.concretes;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import kodlama.io.devs.business.abstracts.ProgrammingLanguageService;
+import kodlama.io.devs.business.mapping.mapStruct.ProgrammingLanguageMapper;
+import kodlama.io.devs.business.requests.programmingLanguage.CreateProgrammingLanguageRequest;
+import kodlama.io.devs.business.requests.programmingLanguage.DeleteProgrammingLanguageRequest;
+import kodlama.io.devs.business.requests.programmingLanguage.UpdateProgrammingLanguageRequest;
+import kodlama.io.devs.business.responses.programmingLanguage.GetAllProgrammingLanguagesResponse;
+import kodlama.io.devs.business.responses.programmingLanguage.GetProgrammingLanguageByIdResponse;
 import kodlama.io.devs.core.results.Result;
 import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 	ProgrammingLanguageRepository programmingLanguageRepository;
-	
+	ProgrammingLanguageMapper programmingLanguageMapper;
 	@Autowired
-	public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository) {
-		super();
+	public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository, ProgrammingLanguageMapper programmingLanguageMapper) {
 		this.programmingLanguageRepository = programmingLanguageRepository;
+		this.programmingLanguageMapper = programmingLanguageMapper;
 	}
 
 
 	@Override
-	public void add(ProgrammingLanguage programmingLanguage) {
+	public void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 
 		List<Result> rules = new ArrayList<Result>();
+		ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toProgrammingLanguage
+				(createProgrammingLanguageRequest);
 
 		rules.add(isNameExist(programmingLanguage));
 		rules.add(isNameBlank(programmingLanguage));
@@ -42,23 +48,21 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		} else {
 
 			this.programmingLanguageRepository.save(programmingLanguage);
-
 		}
+	}
+
+	@Override
+	public void delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest) {
+
+		this.programmingLanguageRepository.deleteById(deleteProgrammingLanguageRequest.getId());
 
 	}
 
 	@Override
-	public void delete(ProgrammingLanguage programmingLanguage) {
+	public void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
 
-		this.programmingLanguageRepository.deleteById(programmingLanguage.getId());
-
-	}
-
-	@Override
-	public void update(ProgrammingLanguage programmingLanguage) {
-		
 		List<Result> rules = new ArrayList<Result>();
-
+		ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toProgrammingLanguage(updateProgrammingLanguageRequest);
 		rules.add(isNameExist(programmingLanguage));
 		rules.add(isNameBlank(programmingLanguage));
 
@@ -76,20 +80,22 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	}
 
 	@Override
-	public List<ProgrammingLanguage> getAll() {
+	public List<GetAllProgrammingLanguagesResponse> getAll() {
 
-		return this.programmingLanguageRepository.findAll();
+		return programmingLanguageMapper.toProgrammingLanguageList
+				(this.programmingLanguageRepository.findAll());
 	}
 
 	@Override
-	public Optional<ProgrammingLanguage> getById(int id) {
+	public GetProgrammingLanguageByIdResponse getById(int id) {
 
-		return this.programmingLanguageRepository.findById(id);
+		return programmingLanguageMapper.toProgrammingLanguageById
+				(this.programmingLanguageRepository.getProgrammingLanguageById(id));
 	}
-	
-	
-	
-	
+
+
+
+
 
 	public Result isNameExist(ProgrammingLanguage programmingLanguage) {
 
@@ -101,12 +107,9 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 				result.setSuccess(false);
 				result.setMessage(
 						"Aynı isimde zaten bir programlama dili var. Lütfen farklı bir isim veriniz. İşlem Başarısız.");
-
 			}
 		}
-
 		return result;
-
 	}
 
 	public Result isNameBlank(ProgrammingLanguage programmingLanguage) {
@@ -117,14 +120,8 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 			result.setSuccess(false);
 			result.setMessage("Girilen isim değeri boş olamaz ve sadece boşluklardan oluşamaz. İşlem Başarısız.");
-
 		}
-
 		return result;
-
 	}
-
-	
-	
 
 }

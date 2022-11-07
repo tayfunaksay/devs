@@ -1,12 +1,5 @@
 package kodlama.io.devs.business.concretes;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import kodlama.io.devs.business.abstracts.FrameworkService;
 import kodlama.io.devs.business.mapping.mapStruct.FrameworkMapper;
 import kodlama.io.devs.business.requests.framework.CreateFrameworkRequest;
@@ -18,6 +11,11 @@ import kodlama.io.devs.core.results.Result;
 import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.FrameworkRepository;
 import kodlama.io.devs.entities.concretes.Framework;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class FrameworkManager implements FrameworkService {
@@ -72,9 +70,9 @@ public class FrameworkManager implements FrameworkService {
 	}
 
 	@Override
-	public Optional<GetFrameworkByIdResponse> getById(int id) {
+	public GetFrameworkByIdResponse getById(int id) {
 		
-			return frameworkMapper.toFrameworkByIdResponce(this.frameworkRepository.findById(id)) ;
+			return frameworkMapper.toFrameworkByIdResponce(this.frameworkRepository.getFrameworkById(id)) ;
 		}
 	
 	
