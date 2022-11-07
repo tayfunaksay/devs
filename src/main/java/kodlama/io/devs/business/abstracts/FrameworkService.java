@@ -3,18 +3,22 @@ package kodlama.io.devs.business.abstracts;
 import java.util.List;
 import java.util.Optional;
 
-import kodlama.io.devs.entities.concretes.Framework;
+import kodlama.io.devs.business.requests.framework.CreateFrameworkRequest;
+import kodlama.io.devs.business.requests.framework.DeleteFrameworkRequest;
+import kodlama.io.devs.business.requests.framework.UpdateFrameworkRequest;
+import kodlama.io.devs.business.responses.framework.GetAllFrameworksResponse;
+import kodlama.io.devs.business.responses.framework.GetFrameworkByIdResponse;
 
 public interface FrameworkService {
 	
-void add(Framework framework);
+	void add(CreateFrameworkRequest createFrameworkRequest);
 	
-	void delete(Framework framework);
+	void delete(DeleteFrameworkRequest deleteFrameworkRequest);
 	
-	void update(Framework framework);
+	void update(UpdateFrameworkRequest updateFrameworkRequest);
 	
-	List<Framework> getAll();
+	List<GetAllFrameworksResponse> getAll();
 	
-	Optional<Framework> getById(int id);
+	Optional<GetFrameworkByIdResponse> getById(int id);
 
 }

@@ -8,6 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlama.io.devs.business.abstracts.FrameworkService;
+import kodlama.io.devs.business.mapping.mapStruct.FrameworkMapper;
+import kodlama.io.devs.business.requests.framework.CreateFrameworkRequest;
+import kodlama.io.devs.business.requests.framework.DeleteFrameworkRequest;
+import kodlama.io.devs.business.requests.framework.UpdateFrameworkRequest;
+import kodlama.io.devs.business.responses.framework.GetAllFrameworksResponse;
+import kodlama.io.devs.business.responses.framework.GetFrameworkByIdResponse;
 import kodlama.io.devs.core.results.Result;
 import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.FrameworkRepository;
@@ -18,29 +24,32 @@ public class FrameworkManager implements FrameworkService {
 
 	private FrameworkRepository frameworkRepository;
 	
+	private FrameworkMapper frameworkMapper;
+	
 	@Autowired
-	public FrameworkManager(FrameworkRepository frameworkRepository) {
-
+	public FrameworkManager(FrameworkRepository frameworkRepository, FrameworkMapper frameworkMapper) {
+		super();
 		this.frameworkRepository = frameworkRepository;
+		this.frameworkMapper = frameworkMapper;
 	}
-
 	
 	@Override
-	public void add(Framework framework) {
-		this.frameworkRepository.save(framework);
-		
+	public void add(CreateFrameworkRequest createFrameworkRequest) {
+		this.frameworkRepository.save(frameworkMapper.toFramework(createFrameworkRequest));
+			
 	}
 
 	@Override
-	public void delete(Framework framework) {
-		this.frameworkRepository.delete(framework);
-		
+	public void delete(DeleteFrameworkRequest deleteFrameworkRequest) {
+		this.frameworkRepository.deleteById(frameworkMapper.toFramework(deleteFrameworkRequest).getId());
+			
 	}
 
 	@Override
-	public void update(Framework framework) {
+	public void update(UpdateFrameworkRequest updateFrameworkRequest) {
 		
 		List<Result> rules = new ArrayList<Result>();
+		Framework framework =frameworkMapper.toFramework(updateFrameworkRequest);
 		
 		rules.add(isFrameworkExist(framework));
 		
@@ -57,15 +66,15 @@ public class FrameworkManager implements FrameworkService {
 	}
 
 	@Override
-	public List<Framework> getAll() {
+	public List<GetAllFrameworksResponse> getAll() {
 		
-		return this.frameworkRepository.findAll();
+		return frameworkMapper.toFrameworkResponseList(frameworkRepository.findAll());
 	}
 
 	@Override
-	public Optional<Framework> getById(int id) {
+	public Optional<GetFrameworkByIdResponse> getById(int id) {
 		
-			return this.frameworkRepository.findById(id);
+			return frameworkMapper.toFrameworkByIdResponce(this.frameworkRepository.findById(id)) ;
 		}
 	
 	
@@ -80,6 +89,8 @@ public class FrameworkManager implements FrameworkService {
 		
 		return result;
 	}
+
+	
 	
 
 }

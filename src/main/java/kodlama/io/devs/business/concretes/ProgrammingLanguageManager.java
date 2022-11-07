@@ -13,16 +13,18 @@ import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
 
+
 @Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 	ProgrammingLanguageRepository programmingLanguageRepository;
-
+	
 	@Autowired
 	public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository) {
-
+		super();
 		this.programmingLanguageRepository = programmingLanguageRepository;
 	}
+
 
 	@Override
 	public void add(ProgrammingLanguage programmingLanguage) {
@@ -48,7 +50,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	@Override
 	public void delete(ProgrammingLanguage programmingLanguage) {
 
-		this.programmingLanguageRepository.delete(programmingLanguage);
+		this.programmingLanguageRepository.deleteById(programmingLanguage.getId());
 
 	}
 
@@ -121,6 +123,8 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		return result;
 
 	}
+
+	
 	
 
 }
