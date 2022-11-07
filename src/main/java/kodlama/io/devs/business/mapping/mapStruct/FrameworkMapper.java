@@ -8,12 +8,13 @@ import kodlama.io.devs.business.responses.framework.GetFrameworkByIdResponse;
 import kodlama.io.devs.entities.concretes.Framework;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
+import org.mapstruct.factory.Mappers;
 
 import java.util.List;
-@Component
-@Mapper
+
+@Mapper(componentModel = "spring")
 public interface FrameworkMapper {
+	FrameworkMapper INSTANCE = Mappers.getMapper( FrameworkMapper.class );
 
 	@Mapping(target = "programmingLanguage.id", source = "programmingLanguageId")
 	Framework toFramework (CreateFrameworkRequest createFrameworkRequest);

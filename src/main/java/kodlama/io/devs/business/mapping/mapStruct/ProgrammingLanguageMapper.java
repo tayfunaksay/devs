@@ -7,14 +7,15 @@ import kodlama.io.devs.business.responses.programmingLanguage.GetAllProgrammingL
 import kodlama.io.devs.business.responses.programmingLanguage.GetProgrammingLanguageByIdResponse;
 import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
+import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Component
+
 @Mapper(componentModel = "spring")
 public interface ProgrammingLanguageMapper {
 
+	ProgrammingLanguageMapper INSTANCE = Mappers.getMapper( ProgrammingLanguageMapper.class );
 
 
 	ProgrammingLanguage toProgrammingLanguage (CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
