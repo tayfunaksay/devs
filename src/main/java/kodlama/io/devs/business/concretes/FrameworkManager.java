@@ -19,10 +19,8 @@ import java.util.List;
 
 @Service
 public class FrameworkManager implements FrameworkService {
-
-	private FrameworkRepository frameworkRepository;
-	
-	private FrameworkMapper frameworkMapper;
+	private final FrameworkRepository frameworkRepository;
+	private final  FrameworkMapper frameworkMapper;
 	
 	@Autowired
 	public FrameworkManager(FrameworkRepository frameworkRepository, FrameworkMapper frameworkMapper) {
@@ -46,7 +44,7 @@ public class FrameworkManager implements FrameworkService {
 	@Override
 	public void update(UpdateFrameworkRequest updateFrameworkRequest) {
 		
-		List<Result> rules = new ArrayList<Result>();
+		List<Result> rules = new ArrayList<>();
 		Framework framework =frameworkMapper.toFramework(updateFrameworkRequest);
 		
 		rules.add(isFrameworkExist(framework));

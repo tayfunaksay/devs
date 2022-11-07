@@ -33,7 +33,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	@Override
 	public void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 
-		List<Result> rules = new ArrayList<Result>();
+		List<Result> rules = new ArrayList<>();
 		ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toProgrammingLanguage
 				(createProgrammingLanguageRequest);
 
@@ -61,7 +61,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	@Override
 	public void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
 
-		List<Result> rules = new ArrayList<Result>();
+		List<Result> rules = new ArrayList<>();
 		ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toProgrammingLanguage(updateProgrammingLanguageRequest);
 		rules.add(isNameExist(programmingLanguage));
 		rules.add(isNameBlank(programmingLanguage));
