@@ -65,6 +65,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toProgrammingLanguage(updateProgrammingLanguageRequest);
 		rules.add(isNameExist(programmingLanguage));
 		rules.add(isNameBlank(programmingLanguage));
+		rules.add(isProgrammingLanguageExist(programmingLanguage));
 
 		Result checkedRulesResult = RulesManager.checkRules(rules);
 
@@ -123,5 +124,13 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		}
 		return result;
 	}
+	public Result isProgrammingLanguageExist (ProgrammingLanguage programmingLanguage) {
+		Result result = new Result(true, "");
+		if (!this.programmingLanguageRepository.findById(programmingLanguage.getId()).isPresent()) {
+			result.setMessage("Bu id ile bir Programming Language bulunamadı. Lütfen bilgileri kontrol ediniz.");
+			result.setSuccess(false);
+		}
 
+		return result;
+	}
 }

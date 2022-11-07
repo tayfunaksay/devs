@@ -34,7 +34,20 @@ public class FrameworkManager implements FrameworkService {
 	
 	@Override
 	public void add(CreateFrameworkRequest createFrameworkRequest) {
-		this.frameworkRepository.save(frameworkMapper.toFramework(createFrameworkRequest));
+		List<Result> rules = new ArrayList<>();
+		Framework framework = frameworkMapper.toFramework(createFrameworkRequest);
+		rules.add(isFrameworkNameExist(framework));
+		rules.add(isFrameworkNameBlank(framework));
+
+		Result checkRulesResult = RulesManager.checkRules(rules);
+		if (!checkRulesResult.isSuccess()) {
+
+			System.out.println(checkRulesResult.getMessage());
+		} else {
+
+			this.frameworkRepository.save(framework);
+		}
+
 			
 	}
 
@@ -51,9 +64,11 @@ public class FrameworkManager implements FrameworkService {
 		Framework framework =frameworkMapper.toFramework(updateFrameworkRequest);
 		
 		rules.add(isFrameworkExist(framework));
+		rules.add(isFrameworkNameExist(framework));
+		rules.add(isFrameworkNameBlank(framework));
 		
 		Result checkedRulesResult = RulesManager.checkRules(rules);
-		if (checkedRulesResult.isSuccess()) {
+		if (!checkedRulesResult.isSuccess()) {
 
 			System.out.println(checkedRulesResult.getMessage());
 		} else {
@@ -75,8 +90,33 @@ public class FrameworkManager implements FrameworkService {
 		
 			return frameworkMapper.toFrameworkByIdResponse(this.frameworkRepository.getFrameworkById(id)) ;
 		}
-	
-	
+
+	public Result isFrameworkNameExist(Framework framework) {
+
+		Result result = new Result(true, "");
+
+		for (Framework existFramework : this.frameworkRepository.findAll()) {
+			if (existFramework.getName().equals(framework.getName())) {
+
+				result.setSuccess(false);
+				result.setMessage(
+						"Aynı isimde zaten bir Framework var. Lütfen farklı bir isim veriniz. İşlem Başarısız.");
+			}
+		}
+		return result;
+	}
+
+	public Result isFrameworkNameBlank(Framework framework) {
+
+		Result result = new Result(true, "");
+
+		if (framework.getName().isBlank()) {
+
+			result.setSuccess(false);
+			result.setMessage("Girilen isim değeri boş olamaz ve sadece boşluklardan oluşamaz. İşlem Başarısız.");
+		}
+		return result;
+	}
 	
 	
 	public Result isFrameworkExist (Framework framework) {
