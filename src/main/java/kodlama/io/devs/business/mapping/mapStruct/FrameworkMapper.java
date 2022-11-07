@@ -14,7 +14,6 @@ import kodlama.io.devs.business.responses.framework.GetAllFrameworksResponse;
 import kodlama.io.devs.business.responses.framework.GetFrameworkByIdResponse;
 import kodlama.io.devs.entities.concretes.Framework;
 
-@Repository
 @Mapper
 public interface FrameworkMapper {
 	FrameworkMapper INSTANCE = Mappers.getMapper( FrameworkMapper.class );
