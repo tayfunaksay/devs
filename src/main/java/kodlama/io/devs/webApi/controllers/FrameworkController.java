@@ -1,22 +1,15 @@
 package kodlama.io.devs.webApi.controllers;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import kodlama.io.devs.business.abstracts.FrameworkService;
 import kodlama.io.devs.business.requests.framework.CreateFrameworkRequest;
 import kodlama.io.devs.business.requests.framework.DeleteFrameworkRequest;
 import kodlama.io.devs.business.requests.framework.UpdateFrameworkRequest;
 import kodlama.io.devs.business.responses.framework.GetAllFrameworksResponse;
 import kodlama.io.devs.business.responses.framework.GetFrameworkByIdResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/frameworks")
@@ -59,7 +52,7 @@ public class FrameworkController {
 	}
 	
 	@GetMapping("/getbyid")
-	public Optional<GetFrameworkByIdResponse> getById(int id) {
+	public GetFrameworkByIdResponse getById(int id) {
 		return this.frameworkService.getById(id);
 
 		
