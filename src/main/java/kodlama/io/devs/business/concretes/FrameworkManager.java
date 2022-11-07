@@ -80,10 +80,10 @@ public class FrameworkManager implements FrameworkService {
 	
 	
 	public Result isFrameworkExist (Framework framework) {
-		Result result = new Result(false, "");
-		if (!this.frameworkRepository.findById(framework.getId()).isEmpty()) {
+		Result result = new Result(true, "");
+		if (!this.frameworkRepository.findById(framework.getId()).isPresent()) {
 			result.setMessage("Bu id ile bir framework bulunamadı. Lütfen bilgileri kontrol ediniz.");
-			result.setSuccess(true);
+			result.setSuccess(false);
 		}
 		
 		return result;
