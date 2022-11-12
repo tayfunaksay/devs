@@ -1,10 +1,10 @@
 package kodlama.io.devs.business.abstracts;
 
-import kodlama.io.devs.business.requests.framework.CreateFrameworkRequest;
-import kodlama.io.devs.business.requests.framework.DeleteFrameworkRequest;
-import kodlama.io.devs.business.requests.framework.UpdateFrameworkRequest;
-import kodlama.io.devs.business.responses.framework.GetAllFrameworksResponse;
-import kodlama.io.devs.business.responses.framework.GetFrameworkByIdResponse;
+import kodlama.io.devs.dtos.framework.CreateFrameworkRequest;
+import kodlama.io.devs.dtos.framework.DeleteFrameworkRequest;
+import kodlama.io.devs.dtos.framework.UpdateFrameworkRequest;
+import kodlama.io.devs.dtos.framework.FrameworkDto;
+import kodlama.io.devs.dtos.framework.FrameworkByIdDto;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ public interface FrameworkService {
 	
 	void update(UpdateFrameworkRequest updateFrameworkRequest);
 	
-	List<GetAllFrameworksResponse> getAll();
+	List<FrameworkDto> getAll();
 	
-	GetFrameworkByIdResponse getById(int id);
+	FrameworkByIdDto getById(int id);
 
 }

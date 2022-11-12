@@ -1,11 +1,11 @@
 package kodlama.io.devs.webApi.controllers;
 
 import kodlama.io.devs.business.abstracts.ProgrammingLanguageService;
-import kodlama.io.devs.business.requests.programmingLanguage.CreateProgrammingLanguageRequest;
-import kodlama.io.devs.business.requests.programmingLanguage.DeleteProgrammingLanguageRequest;
-import kodlama.io.devs.business.requests.programmingLanguage.UpdateProgrammingLanguageRequest;
-import kodlama.io.devs.business.responses.programmingLanguage.GetAllProgrammingLanguagesResponse;
-import kodlama.io.devs.business.responses.programmingLanguage.GetProgrammingLanguageByIdResponse;
+import kodlama.io.devs.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
+import kodlama.io.devs.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
+import kodlama.io.devs.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
+import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
+import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,14 +46,14 @@ public class ProgrammingLanguagesController {
 	}
 
 	@GetMapping("/getall")
-	public List<GetAllProgrammingLanguagesResponse> getAll() {
+	public List<ProgrammingLanguageDto> getAll() {
 		return this.programmingLanguageService.getAll();
 
 		
 	}
 	
 	@GetMapping("/getbyid")
-	public GetProgrammingLanguageByIdResponse getById(int id) {
+	public ProgrammingLanguageByIdDto getById(int id) {
 		return this.programmingLanguageService.getById(id);
 
 		

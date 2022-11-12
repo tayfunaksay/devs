@@ -1,11 +1,11 @@
 package kodlama.io.devs.webApi.controllers;
 
 import kodlama.io.devs.business.abstracts.FrameworkService;
-import kodlama.io.devs.business.requests.framework.CreateFrameworkRequest;
-import kodlama.io.devs.business.requests.framework.DeleteFrameworkRequest;
-import kodlama.io.devs.business.requests.framework.UpdateFrameworkRequest;
-import kodlama.io.devs.business.responses.framework.GetAllFrameworksResponse;
-import kodlama.io.devs.business.responses.framework.GetFrameworkByIdResponse;
+import kodlama.io.devs.dtos.framework.CreateFrameworkRequest;
+import kodlama.io.devs.dtos.framework.DeleteFrameworkRequest;
+import kodlama.io.devs.dtos.framework.UpdateFrameworkRequest;
+import kodlama.io.devs.dtos.framework.FrameworkDto;
+import kodlama.io.devs.dtos.framework.FrameworkByIdDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,14 +45,14 @@ public class FrameworkController {
 	}
 
 	@GetMapping("/getall")
-	public List<GetAllFrameworksResponse> getAll() {
+	public List<FrameworkDto> getAll() {
 		return this.frameworkService.getAll();
 
 		
 	}
 	
 	@GetMapping("/getbyid")
-	public GetFrameworkByIdResponse getById(int id) {
+	public FrameworkByIdDto getById(int id) {
 		return this.frameworkService.getById(id);
 
 		

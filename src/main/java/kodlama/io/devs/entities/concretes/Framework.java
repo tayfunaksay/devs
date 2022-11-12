@@ -1,23 +1,10 @@
 package kodlama.io.devs.entities.concretes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+import java.util.Objects;
 
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "frameworks")
 public class Framework {
 	
@@ -32,5 +19,69 @@ public class Framework {
 	@ManyToOne()
 	@JoinColumn(name = "programming_language_id")
 	private ProgrammingLanguage programmingLanguage;
-	
+
+
+	public Framework() {
+	}
+
+	public Framework(int id, String name, ProgrammingLanguage programmingLanguage) {
+		this.id = id;
+		this.name = name;
+		this.programmingLanguage = programmingLanguage;
+	}
+
+	public Framework(String name, ProgrammingLanguage programmingLanguage) {
+		this.name = name;
+		this.programmingLanguage = programmingLanguage;
+	}
+
+	public Framework(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ProgrammingLanguage getProgrammingLanguage() {
+		return programmingLanguage;
+	}
+
+	public void setProgrammingLanguage(ProgrammingLanguage programmingLanguage) {
+		this.programmingLanguage = programmingLanguage;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Framework framework = (Framework) o;
+		return id == framework.id && Objects.equals(name, framework.name) && Objects.equals(programmingLanguage, framework.programmingLanguage);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, programmingLanguage);
+	}
+
+	@Override
+	public String toString() {
+		return "Framework{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", programmingLanguage=" + programmingLanguage +
+				'}';
+	}
 }

@@ -1,30 +1,30 @@
 package kodlama.io.devs.business.concretes;
 
 import kodlama.io.devs.business.abstracts.ProgrammingLanguageService;
-import kodlama.io.devs.business.mapping.mapStruct.ProgrammingLanguageMapper;
-import kodlama.io.devs.business.requests.programmingLanguage.CreateProgrammingLanguageRequest;
-import kodlama.io.devs.business.requests.programmingLanguage.DeleteProgrammingLanguageRequest;
-import kodlama.io.devs.business.requests.programmingLanguage.UpdateProgrammingLanguageRequest;
-import kodlama.io.devs.business.responses.programmingLanguage.GetAllProgrammingLanguagesResponse;
-import kodlama.io.devs.business.responses.programmingLanguage.GetProgrammingLanguageByIdResponse;
+import kodlama.io.devs.mapping.abstracts.ProgrammingLanguageMapper;
+import kodlama.io.devs.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
+import kodlama.io.devs.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
+import kodlama.io.devs.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
+import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
+import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
 import kodlama.io.devs.core.results.Result;
 import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Service
+@Component
 public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
-	ProgrammingLanguageRepository programmingLanguageRepository;
-	ProgrammingLanguageMapper programmingLanguageMapper;
-	@Autowired
-	public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository, ProgrammingLanguageMapper programmingLanguageMapper) {
+	private final ProgrammingLanguageRepository programmingLanguageRepository;
+	private final ProgrammingLanguageMapper programmingLanguageMapper;
+
+	public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository,
+									  ProgrammingLanguageMapper programmingLanguageMapper) {
 		this.programmingLanguageRepository = programmingLanguageRepository;
 		this.programmingLanguageMapper = programmingLanguageMapper;
 	}
@@ -81,14 +81,14 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	}
 
 	@Override
-	public List<GetAllProgrammingLanguagesResponse> getAll() {
+	public List<ProgrammingLanguageDto> getAll() {
 
 		return programmingLanguageMapper.toProgrammingLanguageList
 				(this.programmingLanguageRepository.findAll());
 	}
 
 	@Override
-	public GetProgrammingLanguageByIdResponse getById(int id) {
+	public ProgrammingLanguageByIdDto getById(int id) {
 
 		return programmingLanguageMapper.toProgrammingLanguageById
 				(this.programmingLanguageRepository.getProgrammingLanguageById(id));
