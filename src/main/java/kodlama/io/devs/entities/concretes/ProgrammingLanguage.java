@@ -8,79 +8,80 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "programmingLanguage")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","frameworks"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "frameworks"})
 
 public class ProgrammingLanguage {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name ="id")
-	private int id;
-	
-	@Column(name ="name")
-	private String name;
-	
-	@OneToMany(mappedBy = "programmingLanguage")
-	private List<Framework> frameworks;
 
-	public ProgrammingLanguage() {
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-	public ProgrammingLanguage(int id) {
-		this.id = id;
-	}
-	public ProgrammingLanguage(String name) {
-		this.name = name;
-	}
+    @Column(name = "name")
+    private String name;
 
-	public ProgrammingLanguage(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
+    @OneToMany(mappedBy = "programmingLanguage")
+    private List<Framework> frameworks;
 
-	public int getId() {
-		return id;
-	}
+    public ProgrammingLanguage() {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public ProgrammingLanguage(int id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public ProgrammingLanguage(String name) {
+        this.name = name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public ProgrammingLanguage(int id, String name) {
+        this(id);
+        this.name = name;
+    }
 
-	public List<Framework> getFrameworks() {
-		return frameworks;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setFrameworks(List<Framework> frameworks) {
-		this.frameworks = frameworks;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		ProgrammingLanguage that = (ProgrammingLanguage) o;
-		return id == that.id && Objects.equals(name, that.name) && Objects.equals(frameworks, that.frameworks);
-	}
+    public String getName() {
+        return name;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, name, frameworks);
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public String toString() {
-		return "ProgrammingLanguage{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", frameworks=" + frameworks +
-				'}';
-	}
+    public List<Framework> getFrameworks() {
+        return frameworks;
+    }
+
+    public void setFrameworks(List<Framework> frameworks) {
+        this.frameworks = frameworks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProgrammingLanguage that = (ProgrammingLanguage) o;
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(frameworks, that.frameworks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, frameworks);
+    }
+
+    @Override
+    public String toString() {
+        return "ProgrammingLanguage{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", frameworks=" + frameworks +
+                '}';
+    }
 }

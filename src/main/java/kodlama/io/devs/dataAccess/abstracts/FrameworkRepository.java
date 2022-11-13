@@ -5,6 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FrameworkRepository extends JpaRepository<Framework, Integer> {
 
-    Framework getFrameworkById (int id);
 
 }

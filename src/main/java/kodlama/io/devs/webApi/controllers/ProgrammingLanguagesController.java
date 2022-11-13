@@ -7,6 +7,7 @@ import kodlama.io.devs.dtos.programmingLanguages.UpdateProgrammingLanguageReques
 import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
 import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,49 +15,40 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/programminglanguages")
 public class ProgrammingLanguagesController {
-	
-	ProgrammingLanguageService programmingLanguageService;
-	
-	@Autowired
-	public ProgrammingLanguagesController(ProgrammingLanguageService programmingLanguageService) {
-		this.programmingLanguageService = programmingLanguageService;
-	}
-	
-	
-	
-	@PostMapping("/add")
-	public void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest){
-		
-		this.programmingLanguageService.add(createProgrammingLanguageRequest);
 
-	}
+    ProgrammingLanguageService programmingLanguageService;
 
-	@DeleteMapping("/delete")
-	public void delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest) {
+    @Autowired
+    public ProgrammingLanguagesController(ProgrammingLanguageService programmingLanguageService) {
+        this.programmingLanguageService = programmingLanguageService;
+    }
 
-		this.programmingLanguageService.delete(deleteProgrammingLanguageRequest);
+    @PostMapping("/add")
+    public ResponseEntity<Void> add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
+        this.programmingLanguageService.add(createProgrammingLanguageRequest);
+        return ResponseEntity.ok().build();
+    }
 
-	}
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest) {
+        this.programmingLanguageService.delete(deleteProgrammingLanguageRequest);
+        return ResponseEntity.ok().build();
+    }
 
-	@PutMapping("/update")
-	public void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest){
-		
-		this.programmingLanguageService.update(updateProgrammingLanguageRequest);
-		
-	}
+    @PutMapping("/update")
+    public ResponseEntity<Void> update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+        this.programmingLanguageService.update(updateProgrammingLanguageRequest);
+        return ResponseEntity.ok().build();
+    }
 
-	@GetMapping("/getall")
-	public List<ProgrammingLanguageDto> getAll() {
-		return this.programmingLanguageService.getAll();
+    @GetMapping("/getall")
+    public ResponseEntity<List<ProgrammingLanguageDto>> getAll() {
+        return ResponseEntity.ok(this.programmingLanguageService.getAll());
+    }
 
-		
-	}
-	
-	@GetMapping("/getbyid")
-	public ProgrammingLanguageByIdDto getById(int id) {
-		return this.programmingLanguageService.getById(id);
-
-		
-	}
+    @GetMapping("/getbyid")
+    public ResponseEntity<ProgrammingLanguageByIdDto> getById(int id) {
+        return ResponseEntity.ok(this.programmingLanguageService.getById(id));
+    }
 
 }

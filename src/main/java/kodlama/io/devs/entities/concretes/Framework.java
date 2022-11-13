@@ -24,10 +24,8 @@ public class Framework {
 	public Framework() {
 	}
 
-	public Framework(int id, String name, ProgrammingLanguage programmingLanguage) {
+	public Framework(int id) {
 		this.id = id;
-		this.name = name;
-		this.programmingLanguage = programmingLanguage;
 	}
 
 	public Framework(String name, ProgrammingLanguage programmingLanguage) {
@@ -35,8 +33,10 @@ public class Framework {
 		this.programmingLanguage = programmingLanguage;
 	}
 
-	public Framework(int id) {
+	public Framework(int id, String name, ProgrammingLanguage programmingLanguage) {
+		this(name, programmingLanguage);
 		this.id = id;
+
 	}
 
 	public int getId() {
