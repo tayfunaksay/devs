@@ -28,7 +28,7 @@ public class FrameworkManager implements FrameworkService {
         Framework framework = frameworkMapper.toFramework(createFrameworkRequest);
 
         Result checkedRulesResult = RulesManager.checkRules(
-                List.of(isFrameworkNameExist(framework),isFrameworkNameBlank(framework)));
+                List.of(isFrameworkNameExist(framework),isFrameworkNameBlank(framework),isFrameworkExist(framework)));
 
         if (!checkedRulesResult.isSuccess()) {
             System.out.println(checkedRulesResult.getMessage());
@@ -48,7 +48,7 @@ public class FrameworkManager implements FrameworkService {
         Framework framework = frameworkMapper.toFramework(updateFrameworkRequest);
 
         Result checkedRulesResult = RulesManager.checkRules(
-                List.of(isFrameworkNameExist(framework),isFrameworkNameBlank(framework)));
+                List.of(isFrameworkNameExist(framework),isFrameworkNameBlank(framework),isFrameworkExist(framework)));
 
         if (!checkedRulesResult.isSuccess()) {
             System.out.println(checkedRulesResult.getMessage());

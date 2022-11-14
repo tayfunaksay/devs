@@ -1,12 +1,7 @@
 package kodlama.io.devs.webApi.controllers;
 
 import kodlama.io.devs.business.abstracts.FrameworkService;
-import kodlama.io.devs.dtos.framework.CreateFrameworkRequest;
-import kodlama.io.devs.dtos.framework.DeleteFrameworkRequest;
-import kodlama.io.devs.dtos.framework.UpdateFrameworkRequest;
-import kodlama.io.devs.dtos.framework.FrameworkDto;
-import kodlama.io.devs.dtos.framework.FrameworkByIdDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import kodlama.io.devs.dtos.framework.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +11,12 @@ import java.util.List;
 @RequestMapping("/api/v1/frameworks")
 public class FrameworkController {
 
-    @Autowired
     private FrameworkService frameworkService;
-
     public FrameworkController(FrameworkService frameworkService) {
+
         this.frameworkService = frameworkService;
     }
+
 
     @PostMapping("/add")
     public ResponseEntity<Void> add(CreateFrameworkRequest createFrameworkRequest) {
@@ -43,6 +38,7 @@ public class FrameworkController {
 
     @GetMapping("/getall")
     public ResponseEntity<List<FrameworkDto>> getAll() {
+
         return ResponseEntity.ok(this.frameworkService.getAll());
     }
 
