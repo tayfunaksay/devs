@@ -1,11 +1,11 @@
 package kodlama.io.devs.webApi.controllers;
 
 import kodlama.io.devs.business.abstracts.ProgrammingLanguageService;
-import kodlama.io.devs.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
+import kodlama.io.devs.model.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageDto;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

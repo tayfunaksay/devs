@@ -1,4 +1,4 @@
-package kodlama.io.devs.dtos.programmingLanguages;
+package kodlama.io.devs.model.dtos.programmingLanguages;
 
 import java.util.Objects;
 

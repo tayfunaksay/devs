@@ -1,10 +1,10 @@
 package kodlama.io.devs.business.abstracts;
 
-import kodlama.io.devs.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
+import kodlama.io.devs.model.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageDto;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
 
 import java.util.List;
 

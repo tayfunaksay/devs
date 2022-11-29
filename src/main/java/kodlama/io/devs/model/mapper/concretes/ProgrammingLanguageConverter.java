@@ -1,8 +1,8 @@
-package kodlama.io.devs.mapping.concretes;
+package kodlama.io.devs.model.mapper.concretes;
 
-import kodlama.io.devs.dtos.programmingLanguages.*;
-import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
-import kodlama.io.devs.mapping.abstracts.ProgrammingLanguageMapper;
+import kodlama.io.devs.model.dtos.programmingLanguages.*;
+import kodlama.io.devs.model.entities.ProgrammingLanguage;
+import kodlama.io.devs.model.mapper.abstracts.ProgrammingLanguageMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

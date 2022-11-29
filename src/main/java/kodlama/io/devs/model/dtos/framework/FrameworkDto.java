@@ -1,6 +1,6 @@
-package kodlama.io.devs.dtos.framework;
+package kodlama.io.devs.model.dtos.framework;
 
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageDto;
 
 import java.util.Objects;
 

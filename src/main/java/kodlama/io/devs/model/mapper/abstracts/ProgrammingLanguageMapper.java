@@ -1,11 +1,11 @@
-package kodlama.io.devs.mapping.abstracts;
+package kodlama.io.devs.model.mapper.abstracts;
 
-import kodlama.io.devs.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
-import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
+import kodlama.io.devs.model.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageDto;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
+import kodlama.io.devs.model.entities.ProgrammingLanguage;
 
 import java.util.List;
 

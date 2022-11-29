@@ -4,10 +4,10 @@ import kodlama.io.devs.business.abstracts.FrameworkService;
 import kodlama.io.devs.core.results.Result;
 import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.FrameworkRepository;
-import kodlama.io.devs.dtos.framework.*;
-import kodlama.io.devs.entities.concretes.Framework;
+import kodlama.io.devs.model.dtos.framework.*;
+import kodlama.io.devs.model.entities.Framework;
 import kodlama.io.devs.exceptions.FrameworkNotFoundException;
-import kodlama.io.devs.mapping.abstracts.FrameworkMapper;
+import kodlama.io.devs.model.mapper.abstracts.FrameworkMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -65,8 +65,8 @@ public class FrameworkManager implements FrameworkService {
     @Override
     public FrameworkByIdDto getById(int id) {
         return frameworkMapper
-                .toFrameworkByIdResponse(this.frameworkRepository.findById(id).orElseThrow(
-                        () -> new FrameworkNotFoundException("Framework could not found by id: " + id))
+                .toFrameworkByIdResponse(this.frameworkRepository.findById(id)
+                        .orElseThrow(() -> new FrameworkNotFoundException("Framework could not found by id: " + id))
                 );
     }
 

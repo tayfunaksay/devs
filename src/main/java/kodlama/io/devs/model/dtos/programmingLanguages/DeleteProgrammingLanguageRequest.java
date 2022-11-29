@@ -1,14 +1,15 @@
-package kodlama.io.devs.dtos.framework;
+package kodlama.io.devs.model.dtos.programmingLanguages;
 
 import java.util.Objects;
 
-public class DeleteFrameworkRequest {
-		
+public class DeleteProgrammingLanguageRequest {
+	
 	private int id;
-	public DeleteFrameworkRequest() {
+
+	public DeleteProgrammingLanguageRequest() {
 	}
 
-	public DeleteFrameworkRequest(int id) {
+	public DeleteProgrammingLanguageRequest(int id) {
 		this.id = id;
 	}
 
@@ -24,10 +25,9 @@ public class DeleteFrameworkRequest {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		DeleteFrameworkRequest that = (DeleteFrameworkRequest) o;
+		DeleteProgrammingLanguageRequest that = (DeleteProgrammingLanguageRequest) o;
 		return id == that.id;
 	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -35,7 +35,7 @@ public class DeleteFrameworkRequest {
 
 	@Override
 	public String toString() {
-		return "DeleteFrameworkRequest{" +
+		return "DeleteProgrammingLanguageRequest{" +
 				"id=" + id +
 				'}';
 	}

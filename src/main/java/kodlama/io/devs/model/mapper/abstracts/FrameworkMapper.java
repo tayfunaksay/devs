@@ -1,11 +1,11 @@
-package kodlama.io.devs.mapping.abstracts;
+package kodlama.io.devs.model.mapper.abstracts;
 
-import kodlama.io.devs.dtos.framework.CreateFrameworkRequest;
-import kodlama.io.devs.dtos.framework.DeleteFrameworkRequest;
-import kodlama.io.devs.dtos.framework.UpdateFrameworkRequest;
-import kodlama.io.devs.dtos.framework.FrameworkDto;
-import kodlama.io.devs.dtos.framework.FrameworkByIdDto;
-import kodlama.io.devs.entities.concretes.Framework;
+import kodlama.io.devs.model.dtos.framework.CreateFrameworkRequest;
+import kodlama.io.devs.model.dtos.framework.DeleteFrameworkRequest;
+import kodlama.io.devs.model.dtos.framework.UpdateFrameworkRequest;
+import kodlama.io.devs.model.dtos.framework.FrameworkDto;
+import kodlama.io.devs.model.dtos.framework.FrameworkByIdDto;
+import kodlama.io.devs.model.entities.Framework;
 
 import java.util.List;
 

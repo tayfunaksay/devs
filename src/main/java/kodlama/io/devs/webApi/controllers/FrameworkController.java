@@ -1,7 +1,7 @@
 package kodlama.io.devs.webApi.controllers;
 
 import kodlama.io.devs.business.abstracts.FrameworkService;
-import kodlama.io.devs.dtos.framework.*;
+import kodlama.io.devs.model.dtos.framework.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

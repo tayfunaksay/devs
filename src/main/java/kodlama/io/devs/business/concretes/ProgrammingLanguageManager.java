@@ -1,16 +1,16 @@
 package kodlama.io.devs.business.concretes;
 
 import kodlama.io.devs.business.abstracts.ProgrammingLanguageService;
-import kodlama.io.devs.mapping.abstracts.ProgrammingLanguageMapper;
-import kodlama.io.devs.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageDto;
-import kodlama.io.devs.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
+import kodlama.io.devs.model.mapper.abstracts.ProgrammingLanguageMapper;
+import kodlama.io.devs.model.dtos.programmingLanguages.CreateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.DeleteProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.UpdateProgrammingLanguageRequest;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageDto;
+import kodlama.io.devs.model.dtos.programmingLanguages.ProgrammingLanguageByIdDto;
 import kodlama.io.devs.core.results.Result;
 import kodlama.io.devs.core.results.RulesManager;
 import kodlama.io.devs.dataAccess.abstracts.ProgrammingLanguageRepository;
-import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
+import kodlama.io.devs.model.entities.ProgrammingLanguage;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

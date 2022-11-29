@@ -1,9 +1,9 @@
-package kodlama.io.devs.mapping.concretes;
+package kodlama.io.devs.model.mapper.concretes;
 
-import kodlama.io.devs.mapping.abstracts.FrameworkMapper;
-import kodlama.io.devs.dtos.framework.*;
-import kodlama.io.devs.entities.concretes.Framework;
-import kodlama.io.devs.entities.concretes.ProgrammingLanguage;
+import kodlama.io.devs.model.dtos.framework.*;
+import kodlama.io.devs.model.mapper.abstracts.FrameworkMapper;
+import kodlama.io.devs.model.entities.Framework;
+import kodlama.io.devs.model.entities.ProgrammingLanguage;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

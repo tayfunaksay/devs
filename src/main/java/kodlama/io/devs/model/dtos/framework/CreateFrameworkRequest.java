@@ -1,4 +1,4 @@
-package kodlama.io.devs.dtos.framework;
+package kodlama.io.devs.model.dtos.framework;
 
 
 import java.util.Objects;

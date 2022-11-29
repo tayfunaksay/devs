@@ -1,4 +1,4 @@
-package kodlama.io.devs.entities.concretes;
+package kodlama.io.devs.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
